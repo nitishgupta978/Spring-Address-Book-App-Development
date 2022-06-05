@@ -6,20 +6,21 @@ package com.bridgelabz.addressbookapp.dto;
  * call constructor getter&setter, to String Method
  */
 public class AddressBookAppDTO {
-    private String firstname;
-    private String lastname;
-    private long zipcode;
-    private String state;
-    private String city;
-    private String phonenumber;
 
-    public AddressBookAppDTO(String firstname, String lastname, long zipcode, String state, String city, String phonenumber) {
+    public String firstname;
+    public String lastname;
+    public long zipcode;
+    public String state;
+    public String city;
+    public String phoneNumber;
+
+    public AddressBookAppDTO(String firstname, String lastname, long zipcode, String state, String city, String phoneNumber) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.zipcode = zipcode;
         this.state = state;
         this.city = city;
-        this.phonenumber = phonenumber;
+        this.phoneNumber = phoneNumber;
     }
 
     public String getFirstname() {
@@ -62,12 +63,12 @@ public class AddressBookAppDTO {
         this.city = city;
     }
 
-    public String getPhonenumber() {
-        return phonenumber;
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 
-    public void setPhonenumber(String phonenumber) {
-        this.phonenumber = phonenumber;
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber =phoneNumber;
     }
 
     @Override
@@ -78,7 +79,7 @@ public class AddressBookAppDTO {
                 ", zipcode=" + zipcode +
                 ", state='" + state + '\'' +
                 ", city='" + city + '\'' +
-                ", phonenumber='" + phonenumber + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
                 '}';
     }
 }
