@@ -11,7 +11,7 @@ import javax.persistence.Id;
 @Entity
 public class AddressBookData {
     @Id
-    
+
     private int addressId;
     private String firstname;
     private String state;

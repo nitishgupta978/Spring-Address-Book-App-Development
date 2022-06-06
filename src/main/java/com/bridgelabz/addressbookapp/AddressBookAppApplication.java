@@ -25,6 +25,6 @@ public class AddressBookAppApplication {
 
 	}
 	/**
-	 * @Bean and Docket Using for Swagger
+	 * @Bean and Docket Using for call the Swagger server
 	 */
 }

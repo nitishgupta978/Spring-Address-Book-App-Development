@@ -74,12 +74,12 @@ public class AddressBookAppDTO {
     @Override
     public String toString() {
         return "AddressBookAppDTO{" +
-                "firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
+                "firstname='" + firstname + '\n' +
+                ", lastname='" + lastname + '\n' +
                 ", zipcode=" + zipcode +
-                ", state='" + state + '\'' +
+                ", state='" + state + '\n' +
                 ", city='" + city + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' +
+                ", phoneNumber='" + phoneNumber + '\n' +
                 '}';
     }
 }
