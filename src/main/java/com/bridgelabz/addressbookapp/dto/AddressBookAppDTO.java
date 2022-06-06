@@ -1,11 +1,16 @@
 package com.bridgelabz.addressbookapp.dto;
 
+import lombok.Data;
+
 /**
  * @author Nitish kumar gupta
  * date 05/06/2022
  * call constructor getter&setter, to String Method
  */
-public class AddressBookAppDTO {
+public @Data class AddressBookAppDTO {
+    /**
+     * use @Data annotation for Auto generate getter and setter method
+     */
 
     public String firstname;
     public String lastname;
@@ -23,53 +28,53 @@ public class AddressBookAppDTO {
         this.phoneNumber = phoneNumber;
     }
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
-
-    public String getLastname() {
-        return lastname;
-    }
-
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
-    }
-
-    public long getZipcode() {
-        return zipcode;
-    }
-
-    public void setZipcode(long zipcode) {
-        this.zipcode = zipcode;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber =phoneNumber;
-    }
+//    public String getFirstname() {
+//        return firstname;
+//    }
+//
+//    public void setFirstname(String firstname) {
+//        this.firstname = firstname;
+//    }
+//
+//    public String getLastname() {
+//        return lastname;
+//    }
+//
+//    public void setLastname(String lastname) {
+//        this.lastname = lastname;
+//    }
+//
+//    public long getZipcode() {
+//        return zipcode;
+//    }
+//
+//    public void setZipcode(long zipcode) {
+//        this.zipcode = zipcode;
+//    }
+//
+//    public String getState() {
+//        return state;
+//    }
+//
+//    public void setState(String state) {
+//        this.state = state;
+//    }
+//
+//    public String getCity() {
+//        return city;
+//    }
+//
+//    public void setCity(String city) {
+//        this.city = city;
+//    }
+//
+//    public String getPhoneNumber() {
+//        return phoneNumber;
+//    }
+//
+//    public void setPhoneNumber(String phoneNumber) {
+//        this.phoneNumber =phoneNumber;
+//    }
 
     @Override
     public String toString() {
