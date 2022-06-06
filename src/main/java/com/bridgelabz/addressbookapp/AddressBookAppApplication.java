@@ -36,7 +36,7 @@ public class AddressBookAppApplication {
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
-				.apis(RequestHandlerSelectors.basePackage("com.bridgelabz.addressbookapp")) // Note basepackage should we same line Number 1 in main class like,com.bridgelabz.employeepayrollapp;
+				.apis(RequestHandlerSelectors.basePackage("com.bridgelabz.addressbookapp"))
 				.build();
 
 	}

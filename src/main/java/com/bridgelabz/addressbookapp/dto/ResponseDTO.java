@@ -5,25 +5,25 @@ package com.bridgelabz.addressbookapp.dto;
  * The ResponseEntity ensure the ResponseDTO is converted to JSON Response on REST call
  */
 public class ResponseDTO {
-    private String firstname;
+//    private String firstname;
     private String message;
     private Object data;
 
-    public ResponseDTO(String firstname, Object data) {
-        this.firstname = firstname;
+    public ResponseDTO(String message, Object data) {
+//        this.firstname = firstname;
         this.message = message;
         this.data = data;
     }
 
 
 
-    public String getFirstname() {
-        return firstname;
-    }
-
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
-    }
+//    public String getFirstname() {
+//        return firstname;
+//    }
+//
+//    public void setFirstname(String firstname) {
+//        this.firstname = firstname;
+//    }
 
     public String getMessage() {
         return message;
