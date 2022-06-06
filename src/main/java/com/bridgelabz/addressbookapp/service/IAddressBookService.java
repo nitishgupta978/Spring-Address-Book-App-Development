@@ -9,6 +9,6 @@ public interface IAddressBookService  {
     List<AddressBookData>getAddressBookData();
     AddressBookData getAddressBookDataById(int addressId);
     AddressBookData createAddressBookData(AddressBookAppDTO addressBookAppDTO);
-    AddressBookData updateAddressBookData(AddressBookAppDTO addressBookAppDTO);
+    AddressBookData updateAddressBookData( int addressId, AddressBookAppDTO addressBookAppDTO);
     void deleteAddressBookDataById(int addressId);
 }
