@@ -1,8 +1,10 @@
 package com.bridgelabz.addressbookapp;
 
+import ch.qos.logback.core.status.StatusUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import springfox.documentation.builders.RequestHandlerSelectors;
 import springfox.documentation.spi.DocumentationType;
@@ -20,7 +22,13 @@ public class AddressBookAppApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AddressBookAppApplication.class, args);
-        log.info("AddressBook App Started!");
+		ApplicationContext context = SpringApplication.run(AddressBookAppApplication.class,args);
+		log.info("AddressBook App Started IN {} Environment!",context.getEnvironment().getProperty("Environment"));
+		/**
+		 * using - Logging the environment from appropriate application property line no 24,25
+		 * add lombok dependency
+		 *
+		 */
 	}
 
 
