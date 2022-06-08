@@ -21,9 +21,12 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 public class AddressBookAppApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(AddressBookAppApplication.class, args);
+//		SpringApplication.run(AddressBookAppApplication.class, args);
 		ApplicationContext context = SpringApplication.run(AddressBookAppApplication.class,args);
 		log.info("AddressBook App Started IN {} Environment!",context.getEnvironment().getProperty("Environment"));
+		log.info("Employee Payroll DB User is {}",context.getEnvironment().getProperty("spring.datasource.username"));
+
+
 		/**
 		 * using - Logging the environment from appropriate application property line no 24,25
 		 * add lombok dependency
