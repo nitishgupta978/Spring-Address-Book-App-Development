@@ -4,6 +4,7 @@ import com.sun.istack.NotNull;
 import lombok.Data;
 import lombok.ToString;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
@@ -23,9 +24,9 @@ public @ToString  class AddressBookAppDTO {
     @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$",message ="Employee name Invalid" )
     public String lastname;
 
-    @Pattern(regexp = "^[0-9]{6}$",message = "zipcode is invalid pleas enter 6 digit ")
+//    @Pattern(regexp = "^[0-9]{6}$",message = "zipcode is invalid pleas enter 6 digit ")
     @NotBlank(message="Zip Code can't be Empty!!" )
-    public long zipcode;
+    public String zipcode;
 
     @NotBlank(message="State name can't be Empty!!" )
     public String state;
@@ -35,7 +36,7 @@ public @ToString  class AddressBookAppDTO {
     @Pattern(regexp = "^[6-9]{1}[0-9]{9}$",message = "Phone Number is Invalid")
     public String phoneNumber;
 
-    public AddressBookAppDTO(String firstname, String lastname, long zipcode, String state, String city, String phoneNumber) {
+    public AddressBookAppDTO(String firstname, String lastname, String zipcode, String state, String city, String phoneNumber) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.zipcode = zipcode;
