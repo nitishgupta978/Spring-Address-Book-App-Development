@@ -1,6 +1,7 @@
 package com.bridgelabz.addressbookapp.service;
 
 import com.bridgelabz.addressbookapp.dto.AddressBookAppDTO;
+import com.bridgelabz.addressbookapp.exception.AddressBookException;
 import com.bridgelabz.addressbookapp.modle.AddressBookData;
 import com.bridgelabz.addressbookapp.repository.AddressBookRepository;
 import lombok.extern.slf4j.Slf4j;
@@ -29,8 +30,10 @@ public class AddressBookService implements IAddressBookService{
 
     @Override
     public AddressBookData getAddressBookDataById(int addressId) {
-        AddressBookData addressBookData= null;
-        return addressBookDataList.get(addressId-1);
+        //,AddressBookData addressBookData= null;
+       // return addressBookDataList.get(addressId-1);
+        return addressBookDataList.stream().filter(addressBookData ->addressBookData.getAddressId()==addressId)
+                .findFirst().orElseThrow(()->new AddressBookException("Employee not found By Id"));
     }
 
     @Override
