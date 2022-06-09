@@ -1,63 +1,81 @@
 package com.bridgelabz.addressbookapp.dto;
-
-import com.sun.istack.NotNull;
-import lombok.Data;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.ToString;
-
-import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author Nitish kumar gupta
  * date 05/06/2022
- * call constructor getter&setter, to String Method
+ * uSE @ToString
  */
 public @ToString  class AddressBookAppDTO {
     /**
-     * use @Data annotation for Auto generate getter and setter method
+     * use @ToString for lombok annotation for Auto generate getter and setter method
      */
 
-    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$",message ="Employee name Invalid" )
+    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$",message ="firstname name Invalid" )
 
     public String firstname;
-    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$",message ="Employee name Invalid" )
+    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$",message ="lastname name Invalid" )
     public String lastname;
 
-//    @Pattern(regexp = "^[0-9]{6}$",message = "zipcode is invalid pleas enter 6 digit ")
+   @Pattern(regexp = "^[1-9]{1}[0-9]{5}$",message = "zipcode is invalid pleas enter 6 digit ")
     @NotBlank(message="Zip Code can't be Empty!!" )
     public String zipcode;
-
+    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$",message = "state name is Invalid")
     @NotBlank(message="State name can't be Empty!!" )
     public String state;
+    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z-9]{2,}$",message = "city name  is Invalid")
     @NotBlank(message="City name can't be Empty!!" )
     public String city;
 
     @Pattern(regexp = "^[6-9]{1}[0-9]{9}$",message = "Phone Number is Invalid")
     public String phoneNumber;
+    @Pattern(regexp = "male|female|others",message = "Gender needs to male, female or others")
+    public String gender;
 
-    public AddressBookAppDTO(String firstname, String lastname, String zipcode, String state, String city, String phoneNumber) {
+    //@JsonFormat(pattern = "dd MMM yyyy")
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
+    @NotNull(message = "StartDate should Not be Empty")
+    @PastOrPresent(message = "Start Date Should be past or peasant Data")
+    public LocalDate startDate;
+
+    @NotBlank(message = " Profile Can't be Empty")
+    public String profilePic;
+
+    @NotBlank(message = "Notes Can't be Empty")
+    public  String notes;
+
+    @NotNull(message = "department should be not Empty")
+    public List<String>department;
+
+    public AddressBookAppDTO(String firstname, String lastname, String zipcode, String state, String city, String phoneNumber, String gender,
+                             LocalDate startDate, String profilePic, String notes, List<String> department) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.zipcode = zipcode;
         this.state = state;
         this.city = city;
         this.phoneNumber = phoneNumber;
+        this.gender = gender;
+        this.startDate = startDate;
+        this.profilePic = profilePic;
+        this.notes = notes;
+        this.department = department;
     }
 
-
-    @Override
-    public String toString() {
-        return "AddressBookAppDTO{" +
-                "firstname='" + firstname + '\n' +
-                ", lastname='" + lastname + '\n' +
-                ", zipcode=" + zipcode +
-                ", state='" + state + '\n' +
-                ", city='" + city + '\'' +
-                ", phoneNumber='" + phoneNumber + '\n' +
-                '}';
-    }
-
-
+//    public AddressBookAppDTO(String firstname, String lastname, String zipcode, String state, String city, String phoneNumber) {
+//        this.firstname = firstname;
+//        this.lastname = lastname;
+//        this.zipcode = zipcode;
+//        this.state = state;
+//        this.city = city;
+//        this.phoneNumber = phoneNumber;
+//    }
 
 }

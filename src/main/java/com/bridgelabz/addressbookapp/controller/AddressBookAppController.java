@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -50,6 +51,42 @@ public class AddressBookAppController {
          * using service layer
          */
     }
+    @GetMapping("/getAddressByDepartment/{department}")
+    public ResponseEntity<ResponseDTO>getAddressBookDataByDepartment(@PathVariable("department") String department){
+        List<AddressBookData>addressBookDataList=null;
+        addressBookDataList=addressBookService.getAddressBookDataByDepartment(department);
+        ResponseDTO responseDTO = new ResponseDTO("Get Call For Department Successfully",addressBookDataList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+
+    }
+
+    /**
+     * @author Nitish Kumar Gupta
+     * @Date : 08-06-2022
+     * Method :
+     */
+    @GetMapping("/getAddressDetailsByState/{state}")
+    public ResponseEntity<ResponseDTO>getEmployeePayrollDataByState(@PathVariable("state") String state) {
+        List<AddressBookData>addressBookDataList= null;
+        addressBookDataList = addressBookService.getAddressBookDataByState(state);
+        ResponseDTO responseDTO = new ResponseDTO("Get Call Forsate is successfully",addressBookDataList);
+        return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
+    }
+    @GetMapping("/getAddressByGender/{gender}")
+    public ResponseEntity<ResponseDTO>getAddressBookDataByGender(@PathVariable("gender") String gender){
+        List<AddressBookData>addressBookDataList=null;
+       addressBookDataList=addressBookService.getAddressBookDataByGender(gender);
+        ResponseDTO responseDTO=new ResponseDTO("Get call For Gender is Successfully1",addressBookDataList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    }
+    @GetMapping("/getAddressDataByStartDate/{startDate}")
+    public ResponseEntity<ResponseDTO>getAddressBookDataByStartDate(@PathVariable("startDate") LocalDate StartDate){
+        List<AddressBookData>addressBookDataList=null;
+       addressBookDataList=addressBookService.getAddressBookDataByStartDate(StartDate);
+        ResponseDTO responseDTO=new ResponseDTO("Get Call For StartDateTime Successfully !",addressBookDataList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    }
+
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO>createAddressBookData(@Valid @RequestBody AddressBookAppDTO addressBookAppDTO){
         AddressBookData addressBookData = null;

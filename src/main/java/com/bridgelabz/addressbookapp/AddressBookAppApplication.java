@@ -24,16 +24,9 @@ public class AddressBookAppApplication {
 //		SpringApplication.run(AddressBookAppApplication.class, args);
 		ApplicationContext context = SpringApplication.run(AddressBookAppApplication.class,args);
 		log.info("AddressBook App Started IN {} Environment!",context.getEnvironment().getProperty("Environment"));
-		log.info("Employee Payroll DB User is {}",context.getEnvironment().getProperty("spring.datasource.username"));
+		log.info("Address Book DB User is {}",context.getEnvironment().getProperty("spring.datasource.username"));
 
-
-		/**
-		 * using - Logging the environment from appropriate application property line no 24,25
-		 * add lombok dependency
-		 *
-		 */
 	}
-
 
 	@Bean
 	public Docket productApi() {

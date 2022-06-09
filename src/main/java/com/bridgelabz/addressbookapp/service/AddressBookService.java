@@ -8,8 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+
 @Service
 @Slf4j
 public class AddressBookService implements IAddressBookService{
@@ -41,8 +43,9 @@ public class AddressBookService implements IAddressBookService{
         AddressBookData addressBookData=null;
        // addressBookData= new AddressBookData(1,addressBookAppDTO);
         addressBookData=new AddressBookData(addressBookDataList.size()+1,addressBookAppDTO);
+        log.debug("AddressBook Data"+addressBookData.toString());
         addressBookDataList.add(addressBookData);
-        return addressBookData;
+        return addressBookRepository.save(addressBookData);
     }
 
     @Override
@@ -59,5 +62,25 @@ public class AddressBookService implements IAddressBookService{
     public  void deleteAddressBookDataById(int addressId) {
     addressBookDataList.remove(addressId-1);
 
+    }
+
+    @Override
+    public List<AddressBookData> getAddressBookDataByState(String state) {
+        return null;
+    }
+
+    @Override
+    public List<AddressBookData> getAddressBookDataByStartDate(LocalDate startDate) {
+        return null;
+    }
+
+    @Override
+    public List<AddressBookData> getAddressBookDataByGender(String gender) {
+        return null;
+    }
+
+    @Override
+    public List<AddressBookData> getAddressBookDataByDepartment(String department) {
+        return null;
     }
 }
