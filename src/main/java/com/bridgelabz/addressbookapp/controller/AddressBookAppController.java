@@ -41,7 +41,6 @@ public class AddressBookAppController {
     @GetMapping("/get/{addId}")
     public ResponseEntity<ResponseDTO>getAddressBookData (@PathVariable ("addId") int addressId){
         AddressBookData addressBookData = null;
-        //addressBookData = new AddressBookData(2,new AddressBookAppDTO("John","Wick",845438,"Bihar","Bettiah","8882160058"));
         addressBookData= addressBookService.getAddressBookDataById(addressId);
         ResponseDTO responseDTO = new ResponseDTO("Get call for addId Successful!",addressBookData);
         return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
@@ -51,10 +50,10 @@ public class AddressBookAppController {
          * using service layer
          */
     }
-    @GetMapping("/getAddressByDepartment/{department}")
-    public ResponseEntity<ResponseDTO>getAddressBookDataByDepartment(@PathVariable("department") String department){
+    @GetMapping("/getAddressByBranch/{branch}")
+    public ResponseEntity<ResponseDTO>getAddressBookDataByDepartment(@PathVariable("branch") String branch){
         List<AddressBookData>addressBookDataList=null;
-        addressBookDataList=addressBookService.getAddressBookDataByDepartment(department);
+        addressBookDataList=addressBookService.getAddressBookDataByBranch(branch);
         ResponseDTO responseDTO = new ResponseDTO("Get Call For Department Successfully",addressBookDataList);
         return new ResponseEntity<>(responseDTO,HttpStatus.OK);
 
@@ -69,7 +68,7 @@ public class AddressBookAppController {
     public ResponseEntity<ResponseDTO>getEmployeePayrollDataByState(@PathVariable("state") String state) {
         List<AddressBookData>addressBookDataList= null;
         addressBookDataList = addressBookService.getAddressBookDataByState(state);
-        ResponseDTO responseDTO = new ResponseDTO("Get Call Forsate is successfully",addressBookDataList);
+        ResponseDTO responseDTO = new ResponseDTO("Get Call For state is successfully",addressBookDataList);
         return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
     }
     @GetMapping("/getAddressByGender/{gender}")

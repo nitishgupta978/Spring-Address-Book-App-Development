@@ -3,7 +3,6 @@ package com.bridgelabz.addressbookapp.repository;
 import com.bridgelabz.addressbookapp.modle.AddressBookData;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
@@ -16,8 +15,8 @@ import java.util.List;
  */
 @Repository
 public interface AddressBookRepository  extends JpaRepository <AddressBookData, Integer>{
-    @Query(value = "select *from address_book, address_department where address_id = id and department = :department",nativeQuery = true)
-    List<AddressBookData> findAddressByDepartment(String department);
+    @Query(value = "select *from address_book, address_branch where address_id = id and branch = :branch",nativeQuery = true)
+    List<AddressBookData> findAddressByBranch(String branch);
 
 
     /**

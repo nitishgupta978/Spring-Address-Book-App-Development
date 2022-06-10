@@ -20,5 +20,5 @@ public interface IAddressBookService  {
 
     List<AddressBookData> getAddressBookDataByGender(String gender);
 
-    List<AddressBookData> getAddressBookDataByDepartment(String department);
+    List<AddressBookData> getAddressBookDataByBranch(String branch);
 }

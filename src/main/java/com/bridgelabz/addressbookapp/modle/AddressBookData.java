@@ -11,7 +11,7 @@ import java.util.List;
  * create AddressBook Data ; this is essentially a data Model that will eventually save in the DB
  */
 @Entity
-@Table(name = "address_book")
+@Table(name = "address_books")
 public @Data  class AddressBookData {
 
     @Id
@@ -24,12 +24,12 @@ public @Data  class AddressBookData {
     private String phoneNumber;
      private String gender;
      private LocalDate startDate;
-     private String notes;
-     private String profilePic;
+
+    private String zipcode;
     @ElementCollection
-    @CollectionTable(name = "address_department",joinColumns = @JoinColumn(name = "id"))
-    @Column(name = "department")
-     private List<String>department;
+    @CollectionTable(name = "address_branch",joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "branch")
+     private List<String>branch;
 
     public AddressBookData(){}
     public AddressBookData(AddressBookAppDTO addressBookAppDTO){
@@ -42,22 +42,9 @@ public @Data  class AddressBookData {
         this.phoneNumber = addressBookAppDTO.phoneNumber;
         this.gender = addressBookAppDTO.gender;
         this.startDate = addressBookAppDTO.startDate;
-        this.notes = addressBookAppDTO.notes;
-        this.profilePic = addressBookAppDTO.profilePic;
-        this.department = addressBookAppDTO.department;
+        this.branch = addressBookAppDTO.branch;
+        this.zipcode = addressBookAppDTO.zipcode;
     }
-
-//    public   AddressBookData(int addressId, AddressBookAppDTO addressBookAppDTO) {
-//        this.addressId = addressId;
-//        this.firstname = addressBookAppDTO.firstname;
-//        this.state =addressBookAppDTO.state;
-//        this.phoneNumber = addressBookAppDTO.phoneNumber;
-//        this.gender = addressBookAppDTO.gender;
-//        this.startDate = addressBookAppDTO.startDate;
-//        this.notes = addressBookAppDTO.notes;
-//        this.profilePic = addressBookAppDTO.profilePic;
-//        this.department = addressBookAppDTO.department;
-//    }
 
 
 

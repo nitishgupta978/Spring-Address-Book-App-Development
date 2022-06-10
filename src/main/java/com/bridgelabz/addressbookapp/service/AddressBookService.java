@@ -9,7 +9,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -81,7 +80,7 @@ public class AddressBookService implements IAddressBookService{
     }
 
     @Override
-    public List<AddressBookData> getAddressBookDataByDepartment(String department) {
-        return addressBookRepository.findAddressByDepartment(department);
+    public List<AddressBookData> getAddressBookDataByBranch(String branch) {
+        return addressBookRepository.findAddressByBranch(branch);
     }
 }

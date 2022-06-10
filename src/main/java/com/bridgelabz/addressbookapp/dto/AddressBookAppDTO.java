@@ -44,18 +44,11 @@ public @ToString  class AddressBookAppDTO {
     @NotNull(message = "StartDate should Not be Empty")
     @PastOrPresent(message = "Start Date Should be past or peasant Data")
     public LocalDate startDate;
-
-    @NotBlank(message = " Profile Can't be Empty")
-    public String profilePic;
-
-    @NotBlank(message = "Notes Can't be Empty")
-    public  String notes;
-
     @NotNull(message = "department should be not Empty")
-    public List<String>department;
+    public List<String>branch;
 
     public AddressBookAppDTO(String firstname, String lastname, String zipcode, String state, String city, String phoneNumber, String gender,
-                             LocalDate startDate, String profilePic, String notes, List<String> department) {
+                             LocalDate startDate,  List<String> branch) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.zipcode = zipcode;
@@ -64,9 +57,7 @@ public @ToString  class AddressBookAppDTO {
         this.phoneNumber = phoneNumber;
         this.gender = gender;
         this.startDate = startDate;
-        this.profilePic = profilePic;
-        this.notes = notes;
-        this.department = department;
+        this.branch = branch;
     }
 
 //    public AddressBookAppDTO(String firstname, String lastname, String zipcode, String state, String city, String phoneNumber) {
