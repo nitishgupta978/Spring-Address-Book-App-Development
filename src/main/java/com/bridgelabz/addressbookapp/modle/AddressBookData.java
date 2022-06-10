@@ -32,9 +32,11 @@ public @Data  class AddressBookData {
      private List<String>department;
 
     public AddressBookData(){}
+    public AddressBookData(AddressBookAppDTO addressBookAppDTO){
+        this.updateAddressBookData(addressBookAppDTO);
+    }
 
-    public AddressBookData(int addressId, AddressBookAppDTO addressBookAppDTO) {
-        this.addressId = addressId;
+    public  void updateAddressBookData(AddressBookAppDTO addressBookAppDTO) {
         this.firstname = addressBookAppDTO.firstname;
         this.state =addressBookAppDTO.state;
         this.phoneNumber = addressBookAppDTO.phoneNumber;
@@ -44,6 +46,18 @@ public @Data  class AddressBookData {
         this.profilePic = addressBookAppDTO.profilePic;
         this.department = addressBookAppDTO.department;
     }
+
+//    public   AddressBookData(int addressId, AddressBookAppDTO addressBookAppDTO) {
+//        this.addressId = addressId;
+//        this.firstname = addressBookAppDTO.firstname;
+//        this.state =addressBookAppDTO.state;
+//        this.phoneNumber = addressBookAppDTO.phoneNumber;
+//        this.gender = addressBookAppDTO.gender;
+//        this.startDate = addressBookAppDTO.startDate;
+//        this.notes = addressBookAppDTO.notes;
+//        this.profilePic = addressBookAppDTO.profilePic;
+//        this.department = addressBookAppDTO.department;
+//    }
 
 
 
