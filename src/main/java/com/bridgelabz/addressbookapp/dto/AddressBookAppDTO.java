@@ -30,34 +30,35 @@ public @ToString  class AddressBookAppDTO {
     @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$",message = "state name is Invalid")
     @NotBlank(message="State name can't be Empty!!" )
     public String state;
-    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z-9]{2,}$",message = "city name  is Invalid")
-    @NotBlank(message="City name can't be Empty!!" )
-    public String city;
+//    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z-9]{2,}$",message = "city name  is Invalid")
+//    @NotBlank(message="City name can't be Empty!!" )
+//    public String city;
 
     @Pattern(regexp = "^[6-9]{1}[0-9]{9}$",message = "Phone Number is Invalid")
     public String phoneNumber;
-    @Pattern(regexp = "male|female|others",message = "Gender needs to male, female or others")
-    public String gender;
+//    @Pattern(regexp = "male|female|others",message = "Gender needs to male, female or others")
+//    public String gender;
 
     //@JsonFormat(pattern = "dd MMM yyyy")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     @NotNull(message = "StartDate should Not be Empty")
     @PastOrPresent(message = "Start Date Should be past or peasant Data")
     public LocalDate startDate;
-    @NotNull(message = "department should be not Empty")
-    public List<String>branch;
 
-    public AddressBookAppDTO(String firstname, String lastname, String zipcode, String state, String city, String phoneNumber, String gender,
-                             LocalDate startDate,  List<String> branch) {
+//    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z-9]{2,}$",message = "city name  is Invalid")
+    @NotNull(message = "department should be not Empty")
+    public List<String>city;
+
+    public AddressBookAppDTO(String firstname, String lastname, String zipcode, String state,  String phoneNumber,
+                             LocalDate startDate,  List<String> city) {
         this.firstname = firstname;
         this.lastname = lastname;
         this.zipcode = zipcode;
         this.state = state;
-        this.city = city;
+       this.city = city;
         this.phoneNumber = phoneNumber;
-        this.gender = gender;
         this.startDate = startDate;
-        this.branch = branch;
+//        this.branch = branch;
     }
 
 //    public AddressBookAppDTO(String firstname, String lastname, String zipcode, String state, String city, String phoneNumber) {

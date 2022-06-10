@@ -11,7 +11,7 @@ import java.util.List;
  * create AddressBook Data ; this is essentially a data Model that will eventually save in the DB
  */
 @Entity
-@Table(name = "address_books")
+@Table(name = "address_book")
 public @Data  class AddressBookData {
 
     @Id
@@ -22,14 +22,15 @@ public @Data  class AddressBookData {
     private String firstname;
     private String state;
     private String phoneNumber;
-     private String gender;
+//     private String gender;
      private LocalDate startDate;
+//     private String city;
 
     private String zipcode;
     @ElementCollection
-    @CollectionTable(name = "address_branch",joinColumns = @JoinColumn(name = "id"))
-    @Column(name = "branch")
-     private List<String>branch;
+    @CollectionTable(name = "address_city",joinColumns = @JoinColumn(name = "id"))
+    @Column(name = "city")
+     private List<String>city;
 
     public AddressBookData(){}
     public AddressBookData(AddressBookAppDTO addressBookAppDTO){
@@ -40,10 +41,10 @@ public @Data  class AddressBookData {
         this.firstname = addressBookAppDTO.firstname;
         this.state =addressBookAppDTO.state;
         this.phoneNumber = addressBookAppDTO.phoneNumber;
-        this.gender = addressBookAppDTO.gender;
         this.startDate = addressBookAppDTO.startDate;
-        this.branch = addressBookAppDTO.branch;
+//        this.branch = addressBookAppDTO.branch;
         this.zipcode = addressBookAppDTO.zipcode;
+        this.city=addressBookAppDTO.city;
     }
 
 

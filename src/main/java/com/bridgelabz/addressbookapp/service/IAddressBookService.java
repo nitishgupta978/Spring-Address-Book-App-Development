@@ -18,7 +18,9 @@ public interface IAddressBookService  {
 
     List<AddressBookData> getAddressBookDataByStartDate(LocalDate startDate);
 
-    List<AddressBookData> getAddressBookDataByGender(String gender);
+//    List<AddressBookData> getAddressBookDataByGender(String gender);
 
-    List<AddressBookData> getAddressBookDataByBranch(String branch);
+//    List<AddressBookData> getAddressBookDataByBranch(String branch);
+
+    List<AddressBookData> getAddressBookDataByCity(String city);
 }

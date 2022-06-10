@@ -15,8 +15,8 @@ import java.util.List;
  */
 @Repository
 public interface AddressBookRepository  extends JpaRepository <AddressBookData, Integer>{
-    @Query(value = "select *from address_book, address_branch where address_id = id and branch = :branch",nativeQuery = true)
-    List<AddressBookData> findAddressByBranch(String branch);
+    @Query(value = "select *from address_book, address_city where address_id = id and city = :city",nativeQuery = true)
+    List<AddressBookData> findAddressByCity(String city);
 
 
     /**
@@ -32,8 +32,8 @@ public interface AddressBookRepository  extends JpaRepository <AddressBookData, 
      * @param gender
      * @return  AddressGender
      */
-    @Query(value = "select * from address_book where gender = :gender",nativeQuery = true)
-    List<AddressBookData>findAddressDataByGender(String  gender);
+//    @Query(value = "select * from address_book where gender = :gender",nativeQuery = true)
+//    List<AddressBookData>findAddressDataByGender(String  gender);
 
     /**
      *

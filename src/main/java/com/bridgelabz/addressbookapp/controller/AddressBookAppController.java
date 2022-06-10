@@ -20,7 +20,7 @@ public class AddressBookAppController {
 
     @Autowired
     private IAddressBookService addressBookService;
-    @RequestMapping(value = {"","/","/getData"})
+    @RequestMapping(value = {"","/","/getAllData"})
     public ResponseEntity<ResponseDTO>getAddressBookData() {
         List<AddressBookData>addressBookDataList=null;
         addressBookDataList=  addressBookService.getAddressBookData();
@@ -50,11 +50,11 @@ public class AddressBookAppController {
          * using service layer
          */
     }
-    @GetMapping("/getAddressByBranch/{branch}")
-    public ResponseEntity<ResponseDTO>getAddressBookDataByDepartment(@PathVariable("branch") String branch){
+    @GetMapping("/getAddressByCity/{city}")
+    public ResponseEntity<ResponseDTO>getAddressBookDataByCity(@PathVariable("city") String city){
         List<AddressBookData>addressBookDataList=null;
-        addressBookDataList=addressBookService.getAddressBookDataByBranch(branch);
-        ResponseDTO responseDTO = new ResponseDTO("Get Call For Department Successfully",addressBookDataList);
+        addressBookDataList=addressBookService.getAddressBookDataByCity(city);
+        ResponseDTO responseDTO = new ResponseDTO("Get Call For city Successfully",addressBookDataList);
         return new ResponseEntity<>(responseDTO,HttpStatus.OK);
 
     }
@@ -71,13 +71,13 @@ public class AddressBookAppController {
         ResponseDTO responseDTO = new ResponseDTO("Get Call For state is successfully",addressBookDataList);
         return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
     }
-    @GetMapping("/getAddressByGender/{gender}")
-    public ResponseEntity<ResponseDTO>getAddressBookDataByGender(@PathVariable("gender") String gender){
-        List<AddressBookData>addressBookDataList=null;
-       addressBookDataList=addressBookService.getAddressBookDataByGender(gender);
-        ResponseDTO responseDTO=new ResponseDTO("Get call For Gender is Successfully1",addressBookDataList);
-        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
-    }
+//    @GetMapping("/getAddressByGender/{gender}")
+//    public ResponseEntity<ResponseDTO>getAddressBookDataByGender(@PathVariable("gender") String gender){
+//        List<AddressBookData>addressBookDataList=null;
+//       addressBookDataList=addressBookService.getAddressBookDataByGender(gender);
+//        ResponseDTO responseDTO=new ResponseDTO("Get call For Gender is Successfully1",addressBookDataList);
+//        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+//    }
     @GetMapping("/getAddressDataByStartDate/{startDate}")
     public ResponseEntity<ResponseDTO>getAddressBookDataByStartDate(@PathVariable("startDate") LocalDate StartDate){
         List<AddressBookData>addressBookDataList=null;

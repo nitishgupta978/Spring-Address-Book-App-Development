@@ -74,13 +74,13 @@ public class AddressBookService implements IAddressBookService{
         return addressBookRepository.findAddressDataByStartDate(startDate);
     }
 
-    @Override
-    public List<AddressBookData> getAddressBookDataByGender(String gender) {
-        return addressBookRepository.findAddressDataByGender(gender);
-    }
+//    @Override
+//    public List<AddressBookData> getAddressBookDataByGender(String gender) {
+//        return addressBookRepository.findAddressDataByGender(gender);
+//    }
 
     @Override
-    public List<AddressBookData> getAddressBookDataByBranch(String branch) {
-        return addressBookRepository.findAddressByBranch(branch);
+    public List<AddressBookData> getAddressBookDataByCity(String city) {
+        return addressBookRepository.findAddressByCity(city);
     }
 }
