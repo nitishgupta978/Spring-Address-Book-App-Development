@@ -30,14 +30,13 @@ public @ToString  class AddressBookAppDTO {
     @Pattern(regexp = "^[A-Z]{1}[a-zA-Z\\s]{2,}$",message = "state name is Invalid")
     @NotBlank(message="State name can't be Empty!!" )
     public String state;
-//    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z-9]{2,}$",message = "city name  is Invalid")
-//    @NotBlank(message="City name can't be Empty!!" )
-//    public String city;
 
     @Pattern(regexp = "^[6-9]{1}[0-9]{9}$",message = "Phone Number is Invalid")
     public String phoneNumber;
-//    @Pattern(regexp = "male|female|others",message = "Gender needs to male, female or others")
-//    public String gender;
+
+//    @Pattern(regexp = "^[a-zA-Z0-9_+&*-]+(?:\\\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\\\.)+[a-zA-Z]{3,7}$",message = "Email pattern is Invalid")
+   @Pattern(regexp = "^[A-Za-z0-9+_.-]+@(.+)$",message = "Email pattern is Invalid")
+    public String email;
 
     //@JsonFormat(pattern = "dd MMM yyyy")
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
@@ -46,10 +45,10 @@ public @ToString  class AddressBookAppDTO {
     public LocalDate startDate;
 
 //    @Pattern(regexp = "^[A-Z]{1}[a-zA-Z-9]{2,}$",message = "city name  is Invalid")
-    @NotNull(message = "department should be not Empty")
+    @NotNull(message = "City Name should be not Empty")
     public List<String>city;
 
-    public AddressBookAppDTO(String firstname, String lastname, String zipcode, String state,  String phoneNumber,
+    public AddressBookAppDTO(String firstname, String lastname, String zipcode, String state,  String phoneNumber,String email,
                              LocalDate startDate,  List<String> city) {
         this.firstname = firstname;
         this.lastname = lastname;
@@ -58,16 +57,7 @@ public @ToString  class AddressBookAppDTO {
        this.city = city;
         this.phoneNumber = phoneNumber;
         this.startDate = startDate;
-//        this.branch = branch;
+       this.email = email;
     }
-
-//    public AddressBookAppDTO(String firstname, String lastname, String zipcode, String state, String city, String phoneNumber) {
-//        this.firstname = firstname;
-//        this.lastname = lastname;
-//        this.zipcode = zipcode;
-//        this.state = state;
-//        this.city = city;
-//        this.phoneNumber = phoneNumber;
-//    }
 
 }

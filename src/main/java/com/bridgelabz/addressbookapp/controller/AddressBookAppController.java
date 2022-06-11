@@ -71,13 +71,13 @@ public class AddressBookAppController {
         ResponseDTO responseDTO = new ResponseDTO("Get Call For state is successfully",addressBookDataList);
         return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
     }
-//    @GetMapping("/getAddressByGender/{gender}")
-//    public ResponseEntity<ResponseDTO>getAddressBookDataByGender(@PathVariable("gender") String gender){
-//        List<AddressBookData>addressBookDataList=null;
-//       addressBookDataList=addressBookService.getAddressBookDataByGender(gender);
-//        ResponseDTO responseDTO=new ResponseDTO("Get call For Gender is Successfully1",addressBookDataList);
-//        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
-//    }
+    @GetMapping("/getAddressByEmail/{email}")
+    public ResponseEntity<ResponseDTO>getAddressBookDataByEmail(@PathVariable("email") String email){
+        List<AddressBookData>addressBookDataList=null;
+       addressBookDataList= addressBookService.getAddressBookDataByEmail(email);
+        ResponseDTO responseDTO=new ResponseDTO("Get call For Email is Successfully1",addressBookDataList);
+        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    }
     @GetMapping("/getAddressDataByStartDate/{startDate}")
     public ResponseEntity<ResponseDTO>getAddressBookDataByStartDate(@PathVariable("startDate") LocalDate StartDate){
         List<AddressBookData>addressBookDataList=null;

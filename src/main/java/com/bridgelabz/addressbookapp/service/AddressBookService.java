@@ -83,4 +83,15 @@ public class AddressBookService implements IAddressBookService{
     public List<AddressBookData> getAddressBookDataByCity(String city) {
         return addressBookRepository.findAddressByCity(city);
     }
+
+    @Override
+    public List<AddressBookData> getAddressBookDataByEmail(String email) {
+
+        return addressBookRepository.findAddressByEmail(email);
+    }
 }
+//try {
+//        ao_history_repository.save(new AoHistory(..));
+//        } catch (DataIntegrityViolationException e) {
+//        System.out.println("history already exist");
+//        }

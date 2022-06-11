@@ -26,6 +26,7 @@ public class AddressBookExceptionHandler {
         ResponseDTO responseDTO= new ResponseDTO(message,"Should have date in the format of yyyy-MMM-dd");
         return  new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
     }
+
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<ResponseDTO> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception){
         List<ObjectError>errorList = exception.getBindingResult().getAllErrors();

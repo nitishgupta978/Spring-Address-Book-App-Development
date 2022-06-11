@@ -24,7 +24,7 @@ public @Data  class AddressBookData {
     private String phoneNumber;
 //     private String gender;
      private LocalDate startDate;
-//     private String city;
+    private String email;
 
     private String zipcode;
     @ElementCollection
@@ -42,7 +42,7 @@ public @Data  class AddressBookData {
         this.state =addressBookAppDTO.state;
         this.phoneNumber = addressBookAppDTO.phoneNumber;
         this.startDate = addressBookAppDTO.startDate;
-//        this.branch = addressBookAppDTO.branch;
+        this.email = addressBookAppDTO.email;
         this.zipcode = addressBookAppDTO.zipcode;
         this.city=addressBookAppDTO.city;
     }

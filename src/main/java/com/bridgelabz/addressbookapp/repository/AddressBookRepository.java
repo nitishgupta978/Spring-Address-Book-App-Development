@@ -43,5 +43,6 @@ public interface AddressBookRepository  extends JpaRepository <AddressBookData, 
     @Query(value = "select * from address_book where StartDate = :StartDate",nativeQuery = true)
     List<AddressBookData>findAddressDataByStartDate(LocalDate StartDate);
 
-
+    @Query(value = "select * from address_book where email = :email",nativeQuery = true)
+    List<AddressBookData> findAddressByEmail(String email);
 }
