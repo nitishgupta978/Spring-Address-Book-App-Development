@@ -8,6 +8,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -16,6 +17,8 @@ import java.util.List;
 public class AddressBookService implements IAddressBookService{
     @Autowired
     private AddressBookRepository addressBookRepository;
+    private AddressBookData  addressBookData;
+
     //private List<AddressBookData>addressBookDataList=new ArrayList<>();
 
     /**
@@ -28,7 +31,7 @@ public class AddressBookService implements IAddressBookService{
         //ist<AddressBookData> addressBookDataList= new ArrayList<>();
         return addressBookRepository.findAll();
     }
-
+    
     @Override
     public AddressBookData getAddressBookDataById(int addressId) {
 //        return addressBookDataList.stream().filter(addressBookData ->addressBookData.getAddressId()==addressId)
@@ -47,11 +50,6 @@ public class AddressBookService implements IAddressBookService{
     @Override
     public AddressBookData updateAddressBookData(int addressId ,AddressBookAppDTO addressBookAppDTO) {
         AddressBookData addressBookData=this.getAddressBookDataById(addressId);
-//        addressBookData.setFirstname(addressBookAppDTO.firstname);
-//        addressBookData.setState(addressBookAppDTO.state);
-//        addressBookData.setPhoneNumber(addressBookAppDTO.phoneNumber);
-//        addressBookDataList.set(addressId-1,addressBookData);
-//        return addressBookData;
         addressBookData.updateAddressBookData(addressBookAppDTO);
         return addressBookRepository.save(addressBookData);
     }
@@ -59,7 +57,6 @@ public class AddressBookService implements IAddressBookService{
     @Override
     public  void deleteAddressBookDataById(int addressId) {
         AddressBookData addressBookData =this.getAddressBookDataById(addressId);
-    //addressBookDataList.remove(addressId-1);
         addressBookRepository.delete(addressBookData);
 
     }
@@ -69,15 +66,6 @@ public class AddressBookService implements IAddressBookService{
         return addressBookRepository.findAddressDataByState(state);
     }
 
-    @Override
-    public List<AddressBookData> getAddressBookDataByStartDate(LocalDate startDate) {
-        return addressBookRepository.findAddressDataByStartDate(startDate);
-    }
-
-//    @Override
-//    public List<AddressBookData> getAddressBookDataByGender(String gender) {
-//        return addressBookRepository.findAddressDataByGender(gender);
-//    }
 
     @Override
     public List<AddressBookData> getAddressBookDataByCity(String city) {
@@ -85,13 +73,20 @@ public class AddressBookService implements IAddressBookService{
     }
 
     @Override
-    public List<AddressBookData> getAddressBookDataByEmail(String email) {
+    public List<AddressBookData> getAddressBookDataByEmailId(String emailId) {
 
-        return addressBookRepository.findAddressByEmail(email);
+        return addressBookRepository.findAddressByEmailId(emailId);
     }
+
+    @Override
+    public List<AddressBookData> sortAddressBookByState() {
+        return addressBookRepository.sortByState();
+    }
+
+    @Override
+    public List<AddressBookData> sortAddressBookByCity() {
+        return addressBookRepository.sortByCity();
+    }
+
+
 }
-//try {
-//        ao_history_repository.save(new AoHistory(..));
-//        } catch (DataIntegrityViolationException e) {
-//        System.out.println("history already exist");
-//        }

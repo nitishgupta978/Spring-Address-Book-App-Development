@@ -27,14 +27,12 @@ public class AddressBookAppApplication {
 		log.info("Address Book DB User is {}",context.getEnvironment().getProperty("spring.datasource.username"));
 
 	}
-
 	@Bean
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
 				.apis(RequestHandlerSelectors.basePackage("com.bridgelabz.addressbookapp"))
 				.build();
-
 	}
 	/**
 	 * @Bean and Docket Using for call the Swagger server tool on Browser

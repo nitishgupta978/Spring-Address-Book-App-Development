@@ -6,6 +6,7 @@ import com.bridgelabz.addressbookapp.modle.AddressBookData;
 import com.bridgelabz.addressbookapp.service.IAddressBookService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -14,17 +15,19 @@ import javax.validation.Valid;
 import java.time.LocalDate;
 import java.util.List;
 
+@CrossOrigin(allowedHeaders = "*", origins = "*")
+//using for @CrossOrigin to connect backend to fronted
 @RestController
 @Slf4j
+@RequestMapping("/addressbook")
 public class AddressBookAppController {
 
     @Autowired
     private IAddressBookService addressBookService;
-    @RequestMapping(value = {"","/","/getAllData"})
+    @GetMapping("/get")
     public ResponseEntity<ResponseDTO>getAddressBookData() {
         List<AddressBookData>addressBookDataList=null;
         addressBookDataList=  addressBookService.getAddressBookData();
-            // addressBookData = new AddressBookData(1,new AddressBookAppDTO("John","Wick",845438,"Bihar","Bettiah","8882160058"));
             ResponseDTO responseDTO = new ResponseDTO("Get call Successful", addressBookDataList);
             return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
             /**
@@ -65,26 +68,36 @@ public class AddressBookAppController {
      * Method :
      */
     @GetMapping("/getAddressDetailsByState/{state}")
-    public ResponseEntity<ResponseDTO>getEmployeePayrollDataByState(@PathVariable("state") String state) {
+    public ResponseEntity<ResponseDTO>getAddressBookDataByState(@PathVariable("state") String state) {
         List<AddressBookData>addressBookDataList= null;
         addressBookDataList = addressBookService.getAddressBookDataByState(state);
         ResponseDTO responseDTO = new ResponseDTO("Get Call For state is successfully",addressBookDataList);
         return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
     }
-    @GetMapping("/getAddressByEmail/{email}")
-    public ResponseEntity<ResponseDTO>getAddressBookDataByEmail(@PathVariable("email") String email){
-        List<AddressBookData>addressBookDataList=null;
-       addressBookDataList= addressBookService.getAddressBookDataByEmail(email);
-        ResponseDTO responseDTO=new ResponseDTO("Get call For Email is Successfully1",addressBookDataList);
-        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    @GetMapping("/get/sortbycity")
+    public ResponseEntity<ResponseDTO> sortByCity() {
+        List<AddressBookData> addressBookList = null ;
+        addressBookList = addressBookService.sortAddressBookByCity();
+        ResponseDTO responseDTO = new ResponseDTO("Sort by city call is successful! ", addressBookList);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
-    @GetMapping("/getAddressDataByStartDate/{startDate}")
-    public ResponseEntity<ResponseDTO>getAddressBookDataByStartDate(@PathVariable("startDate") LocalDate StartDate){
-        List<AddressBookData>addressBookDataList=null;
-       addressBookDataList=addressBookService.getAddressBookDataByStartDate(StartDate);
-        ResponseDTO responseDTO=new ResponseDTO("Get Call For StartDateTime Successfully !",addressBookDataList);
-        return new ResponseEntity<>(responseDTO,HttpStatus.OK);
+    //   To get state in ascending order
+    @GetMapping("/get/sortbystate")
+    public ResponseEntity<ResponseDTO> sortByState() {
+        List<AddressBookData> addressBookList = null;
+        addressBookList = addressBookService.sortAddressBookByState();
+        ResponseDTO responseDTO = new ResponseDTO("Sort by state call is successful! ", addressBookList);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
+    @GetMapping("/getAddressByEmailId/{emailId}")
+    public ResponseEntity<ResponseDTO>getAddressBookDataByEmailId(@PathVariable("emailId") String emailId){
+        List<AddressBookData>addressBookDataList=null;
+       addressBookDataList= addressBookService.getAddressBookDataByEmailId(emailId);
+        ResponseDTO responseDTO=new ResponseDTO("Get call For EmailId is Successfully...",addressBookDataList);
+        return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
+    }
+
+
 
     @PostMapping("/create")
     public ResponseEntity<ResponseDTO>createAddressBookData(@Valid @RequestBody AddressBookAppDTO addressBookAppDTO){

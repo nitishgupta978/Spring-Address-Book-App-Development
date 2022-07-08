@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import javax.validation.UnexpectedTypeException;
+import javax.validation.constraints.Email;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -23,7 +24,7 @@ public class AddressBookExceptionHandler {
     @ExceptionHandler(HttpMessageNotReadableException.class)
     public ResponseEntity<ResponseDTO>handleHttpMessageNotReadableException(HttpMessageNotReadableException exception){
         log.error("Invalid Date Format ",exception);
-        ResponseDTO responseDTO= new ResponseDTO(message,"Should have date in the format of yyyy-MMM-dd");
+        ResponseDTO responseDTO= new ResponseDTO(message,"Should have date in the format of yyyy-MM-dd");
         return  new ResponseEntity<>(responseDTO, HttpStatus.BAD_REQUEST);
     }
 
@@ -37,7 +38,6 @@ public class AddressBookExceptionHandler {
     }
     @ExceptionHandler(AddressBookException.class)
     public  ResponseEntity<ResponseDTO> handleAddressBookException(AddressBookException exception){
-
         ResponseDTO responseDTO= new ResponseDTO(message,exception.getMessage());
         return new ResponseEntity<>(responseDTO,HttpStatus.BAD_REQUEST);
     }

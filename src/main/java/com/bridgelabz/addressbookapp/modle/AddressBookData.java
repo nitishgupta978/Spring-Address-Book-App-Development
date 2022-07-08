@@ -18,19 +18,18 @@ public @Data  class AddressBookData {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "address_id")
     private int addressId;
-    @Column(name = "name")
-    private String firstname;
+
     private String state;
     private String phoneNumber;
-//     private String gender;
-     private LocalDate startDate;
-    private String email;
+
+    private String firstname;
+    private String lastname;
+
+    private String emailId;
 
     private String zipcode;
-    @ElementCollection
-    @CollectionTable(name = "address_city",joinColumns = @JoinColumn(name = "id"))
-    @Column(name = "city")
-     private List<String>city;
+     private String city;
+    private String address;
 
     public AddressBookData(){}
     public AddressBookData(AddressBookAppDTO addressBookAppDTO){
@@ -39,12 +38,15 @@ public @Data  class AddressBookData {
 
     public  void updateAddressBookData(AddressBookAppDTO addressBookAppDTO) {
         this.firstname = addressBookAppDTO.firstname;
+        this.lastname = addressBookAppDTO.lastname;
         this.state =addressBookAppDTO.state;
         this.phoneNumber = addressBookAppDTO.phoneNumber;
-        this.startDate = addressBookAppDTO.startDate;
-        this.email = addressBookAppDTO.email;
+        this.address = addressBookAppDTO.address;
+        this.emailId = addressBookAppDTO.emailId;
         this.zipcode = addressBookAppDTO.zipcode;
         this.city=addressBookAppDTO.city;
+
+
     }
 
 

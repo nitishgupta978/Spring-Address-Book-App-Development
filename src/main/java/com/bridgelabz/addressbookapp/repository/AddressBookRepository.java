@@ -1,12 +1,13 @@
 package com.bridgelabz.addressbookapp.repository;
 
-import com.bridgelabz.addressbookapp.modle.AddressBookData;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.jpa.repository.Query;
-import org.springframework.stereotype.Repository;
+        import com.bridgelabz.addressbookapp.modle.AddressBookData;
+        import org.springframework.boot.env.ConfigTreePropertySource;
+        import org.springframework.data.jpa.repository.JpaRepository;
+        import org.springframework.data.jpa.repository.Query;
+        import org.springframework.stereotype.Repository;
 
-import java.time.LocalDate;
-import java.util.List;
+        import java.time.LocalDate;
+        import java.util.List;
 
 /**
  * @author Nitish Kumar Gupta
@@ -27,22 +28,22 @@ public interface AddressBookRepository  extends JpaRepository <AddressBookData, 
     @Query(value = "select * from address_book where state = :state",nativeQuery = true)
     List<AddressBookData>findAddressDataByState(String state);
 
-    /**
-     *
-     * @param gender
-     * @return  AddressGender
-     */
-//    @Query(value = "select * from address_book where gender = :gender",nativeQuery = true)
-//    List<AddressBookData>findAddressDataByGender(String  gender);
 
     /**
      *
-     * @param StartDate
+     * @param startDate
      * @return AddressStartDateTime
      */
-    @Query(value = "select * from address_book where StartDate = :StartDate",nativeQuery = true)
-    List<AddressBookData>findAddressDataByStartDate(LocalDate StartDate);
+    @Query(value = "select * from address_book where start_date = :startDate",nativeQuery = true)
+    List<AddressBookData>findAddressDataByStartDate(String startDate);
 
-    @Query(value = "select * from address_book where email = :email",nativeQuery = true)
-    List<AddressBookData> findAddressByEmail(String email);
+    @Query(value = "select * from address_book where email_id = :emailId",nativeQuery = true)
+    List<AddressBookData> findAddressByEmailId(String emailId);
+
+    //List<AddressBookData> findAddressByEmailId(String emailId);
+
+    @Query(value = "select *from  address_book order by city asc", nativeQuery = true)
+    List<AddressBookData> sortByCity();
+    @Query(value = "select *from  address_book order by state asc", nativeQuery = true)
+    List<AddressBookData> sortByState();
 }
