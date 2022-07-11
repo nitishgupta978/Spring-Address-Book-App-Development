@@ -16,14 +16,15 @@ public interface IAddressBookService  {
 
     List<AddressBookData> getAddressBookDataByState(String state);
 
-
-
     List<AddressBookData> getAddressBookDataByCity(String city);
 
     List<AddressBookData> getAddressBookDataByEmailId(String emailId);
 
-
     List<AddressBookData> sortAddressBookByState();
 
     List<AddressBookData> sortAddressBookByCity();
+
+    List<AddressBookData> sortAddressBookByFirstName();
+
+    List<AddressBookData> sortAddressBookByEmailId();
 }

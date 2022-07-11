@@ -88,5 +88,15 @@ public class AddressBookService implements IAddressBookService{
         return addressBookRepository.sortByCity();
     }
 
+    @Override
+    public List<AddressBookData> sortAddressBookByFirstName() {
+        return addressBookRepository.sortByName();
+    }
+
+    @Override
+    public List<AddressBookData> sortAddressBookByEmailId() {
+        return addressBookRepository.sortByEmailId();
+    }
+
 
 }

@@ -74,7 +74,7 @@ public class AddressBookAppController {
         ResponseDTO responseDTO = new ResponseDTO("Get Call For state is successfully",addressBookDataList);
         return new ResponseEntity<ResponseDTO>(responseDTO,HttpStatus.OK);
     }
-    @GetMapping("/get/sortbycity")
+    @GetMapping("/get/sortByCity")
     public ResponseEntity<ResponseDTO> sortByCity() {
         List<AddressBookData> addressBookList = null ;
         addressBookList = addressBookService.sortAddressBookByCity();
@@ -82,11 +82,26 @@ public class AddressBookAppController {
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
     //   To get state in ascending order
-    @GetMapping("/get/sortbystate")
+    @GetMapping("/get/sortByState")
     public ResponseEntity<ResponseDTO> sortByState() {
         List<AddressBookData> addressBookList = null;
         addressBookList = addressBookService.sortAddressBookByState();
         ResponseDTO responseDTO = new ResponseDTO("Sort by state call is successful! ", addressBookList);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+    }
+
+    @GetMapping("/get/sortByName")
+    public ResponseEntity<ResponseDTO> sortByFirstName() {
+        List<AddressBookData> addressBookList = null;
+        addressBookList = addressBookService.sortAddressBookByFirstName();
+        ResponseDTO responseDTO = new ResponseDTO("Sort by name call is successful! ", addressBookList);
+        return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
+    }
+    @GetMapping("/get/sortByEmailId")
+    public ResponseEntity<ResponseDTO> sortByEmailId() {
+        List<AddressBookData> addressBookList = null;
+        addressBookList = addressBookService.sortAddressBookByEmailId();
+        ResponseDTO responseDTO = new ResponseDTO("Sort by emailId call is successful! ", addressBookList);
         return new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.OK);
     }
     @GetMapping("/getAddressByEmailId/{emailId}")

@@ -1,12 +1,8 @@
 package com.bridgelabz.addressbookapp.dto;
-import com.fasterxml.jackson.annotation.JsonFormat;
+
 import lombok.ToString;
 import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Pattern;
-import java.time.LocalDate;
-import java.util.List;
 
 /**
  * @author Nitish kumar gupta
