@@ -14,12 +14,12 @@ public class UserDTO {
     public String lastName;
 
     @Email
-    private String email;
+    public String email;
 
     @NotEmpty(message = "address can not be empty")
-    private String address;
+    public String address;
 
     @NotEmpty(message = "Password cant be empty")
-    private String password;
+    public String password;
 
 }

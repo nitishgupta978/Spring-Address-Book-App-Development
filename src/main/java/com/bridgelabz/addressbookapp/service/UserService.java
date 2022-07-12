@@ -1,6 +1,7 @@
 package com.bridgelabz.addressbookapp.service;
 
 import com.bridgelabz.addressbookapp.dto.ResponseDTO;
+import com.bridgelabz.addressbookapp.dto.UserDTO;
 import com.bridgelabz.addressbookapp.dto.UserLoginDTO;
 import com.bridgelabz.addressbookapp.modle.UserRegistration;
 import com.bridgelabz.addressbookapp.repository.UserRepository;
@@ -20,7 +21,7 @@ public class UserService implements IUserService {
     private UserRepository userRepository;
 
     @Override
-    public ResponseEntity<ResponseDTO> addUser(UserLoginDTO userLoginDTO) {
+    public ResponseEntity<ResponseDTO> addUser(UserDTO userLoginDTO) {
         UserRegistration newUser = new UserRegistration(userLoginDTO);
         UserRegistration userRegistration = userRepository.save(new UserRegistration(userLoginDTO));
         ResponseDTO responseDto = new ResponseDTO("User is created", userRegistration);

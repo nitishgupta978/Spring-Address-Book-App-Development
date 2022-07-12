@@ -3,16 +3,21 @@ package com.bridgelabz.addressbookapp.modle;
 import com.bridgelabz.addressbookapp.dto.UserDTO;
 import com.bridgelabz.addressbookapp.dto.UserLoginDTO;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 
 @Entity
 @Data
+@NoArgsConstructor
+
 public class UserRegistration {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer userId;
     private String firstName;
     private String lastName;
@@ -20,41 +25,13 @@ public class UserRegistration {
     private String address;
     private String password;
 
-
-    public UserRegistration() {
-
-    }
-    public UserRegistration(UserDTO userDTO) {
-        this.firstName = userDTO.getFirstName();
-        this.lastName = userDTO.getLastName();
-        this.address = userDTO.getAddress();
-        this.email = userDTO.getEmail();
-        this.password= userDTO.getPassword();
-    }
-    public UserRegistration(Integer userId,UserDTO userDTO){
-        this.userId=userId;
-        this.firstName= userDTO.getFirstName();
-        this.lastName= userDTO.getLastName();
-        this.address= userDTO.getAddress();
-        this.email= userDTO.getEmail();
-        this.password= userDTO.getPassword();
+    public UserRegistration(UserDTO userLoginDTO) {
+        this.firstName = userLoginDTO.firstName;
+        this.lastName = userLoginDTO.lastName;
+        this.email = userLoginDTO.email;
+        this.address = userLoginDTO.address;
+        this.password = userLoginDTO.password;
     }
 
-    public UserRegistration(String email_id, UserDTO userDTO) {
-        this.email=email_id;
-        this.firstName= userDTO.getFirstName();
-        this.lastName= userDTO.getLastName();
-        this.address=userDTO.getAddress();
-        this.password= userDTO.getPassword();
-    }
-    public UserRegistration(UserLoginDTO userLoginDTO) {
-    }
 
-    public void UpdateUser(UserDTO userDTO) {
-        this.firstName= userDTO.getFirstName();
-        this.lastName=userDTO.getLastName();
-        this.email= userDTO.getEmail();
-        this.address=userDTO.getAddress();
-        this.password=userDTO.getPassword();
-    }
 }
